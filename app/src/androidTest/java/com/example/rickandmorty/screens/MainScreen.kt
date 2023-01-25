@@ -15,26 +15,66 @@ object MainScreen : KScreen<MainScreen>() {
     override val layoutId = R.layout.activity_main
     override val viewClass = MainActivity::class.java
 
-    private val listOfCharacterView = KRecyclerView({
-        withId(R.id.characters_rv)
-    }, itemTypeBuilder = {
-        itemType(::CharacterItem)
-    })
-
     class CharacterItem(parent: Matcher<View>) : KRecyclerItem<CharacterItem>(parent) {
-        val nameTextField = KTextView(parent) { withId(R.id.name) }
+        val name = KTextView(parent) { withId(R.id.name) }
         val speciesAndStatusTextField = KTextView(parent) {
             withId(R.id.species_and_status)
         }
         val image = KImageView(parent) { withId(R.id.image) }
     }
 
-    fun actionClickOnTheCharacter(name: String) {
-        listOfCharacterView {
+    private val characterRecycleView = KRecyclerView({
+        withId(R.id.characters_rv)
+    }, itemTypeBuilder = {
+        itemType(::CharacterItem)
+    })
+
+    fun actionClickOnTheCharacterByName(characterName: String) {
+        characterRecycleView {
             childWith<CharacterItem> {
-                withDescendant { withText(name) }
+                withDescendant { withText(characterName) }
             } perform {
-                nameTextField.click()
+                name.click()
+            }
+        }
+    }
+
+    fun actionClickOnTheCharacterAtPosition(elementPosition: Int) {
+        characterRecycleView {
+            childAt<CharacterItem>(elementPosition) {
+                name.click()
+            }
+        }
+    }
+
+    fun assertTheCharacterHasSpeciesAndStatusByName(
+        characterName: String,
+        speciesAndStatus: String
+    ) {
+        characterRecycleView {
+            childWith<CharacterItem> {
+                withDescendant { withText(characterName) }
+            } perform {
+                speciesAndStatusTextField.hasText(speciesAndStatus)
+            }
+        }
+    }
+
+    fun assertTheCharacterHasNameAtPosition(elementPosition: Int, characterName: String) {
+        characterRecycleView {
+            childAt<CharacterItem>(elementPosition) {
+                name.hasText(characterName)
+            }
+        }
+    }
+
+    fun assertTheCharacterHasSpeciesAndStatusAtPosition(
+        elementPosition: Int,
+        speciesAndStatus: String
+    ) {
+        characterRecycleView {
+            childAt<CharacterItem>(elementPosition) {
+                speciesAndStatusTextField.hasText(speciesAndStatus)
             }
         }
     }

@@ -11,12 +11,39 @@ object CharacterDetailScreen : KScreen<CharacterDetailScreen>() {
     override val viewClass = MainActivity::class.java
 
     private val name = KTextView { withId(R.id.name) }
+    private val species = KTextView { withId(R.id.species) }
+    private val status = KTextView { withId(R.id.status) }
+    private val gender = KTextView { withId(R.id.gender) }
 
     fun actionPressBack() {
         pressBack()
     }
 
-    fun assertNameIsVisible(text: String) {
-        name.hasText(text)
+    fun assertNameIsDisplayed(text: String) {
+        name {
+            isDisplayed()
+            hasText(text)
+        }
+    }
+
+    fun assertStatusIsDisplayed(text: String) {
+        status {
+            isDisplayed()
+            hasText(text)
+        }
+    }
+
+    fun assertSpeciesIsDisplayed(text: String) {
+        species {
+            isDisplayed()
+            hasText(text)
+        }
+    }
+
+    fun assertGenderIsDisplayed(text: String) {
+        gender {
+            isDisplayed()
+            hasText(text)
+        }
     }
 }
