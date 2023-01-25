@@ -1,10 +1,10 @@
 {
   "id": 1,
-  "name": "mockWebServer",
+  "name": "Character-1",
   "status": "Alive",
   "species": "Human",
   "type": "",
-  "gender": "Male",
+  "gender": "Female",
   "origin": {
     "name": "Earth (C-137)",
     "url": "https://rickandmortyapi.com/api/location/1"

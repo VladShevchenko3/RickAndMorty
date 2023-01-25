@@ -8,11 +8,11 @@
   "results": [
     {
       "id": 1,
-      "name": "mockWebServer",
+      "name": "Character-1",
       "status": "Alive",
       "species": "Human",
       "type": "",
-      "gender": "Male",
+      "gender": "Female",
       "origin": {
         "name": "Earth (C-137)",
         "url": "https://rickandmortyapi.com/api/location/1"
@@ -80,7 +80,7 @@
     },
     {
       "id": 2,
-      "name": "Morty Smith",
+      "name": "Character-2",
       "status": "Alive",
       "species": "Human",
       "type": "",
@@ -152,7 +152,7 @@
     },
     {
       "id": 3,
-      "name": "Summer Smith",
+      "name": "Character-3",
       "status": "Alive",
       "species": "Human",
       "type": "",
@@ -215,7 +215,7 @@
     },
     {
       "id": 4,
-      "name": "Beth Smith",
+      "name": "Character-4",
       "status": "Alive",
       "species": "Human",
       "type": "",
@@ -278,7 +278,7 @@
     },
     {
       "id": 5,
-      "name": "Jerry Smith",
+      "name": "Character-5",
       "status": "Alive",
       "species": "Human",
       "type": "",
@@ -338,7 +338,7 @@
     },
     {
       "id": 6,
-      "name": "Abadango Cluster Princess",
+      "name": "Character-6",
       "status": "Alive",
       "species": "Alien",
       "type": "",
@@ -360,7 +360,7 @@
     },
     {
       "id": 7,
-      "name": "Abradolf Lincler",
+      "name": "Character-7",
       "status": "unknown",
       "species": "Human",
       "type": "Genetic experiment",
@@ -383,7 +383,7 @@
     },
     {
       "id": 8,
-      "name": "Adjudicator Rick",
+      "name": "Character-8",
       "status": "Dead",
       "species": "Human",
       "type": "",
@@ -405,7 +405,7 @@
     },
     {
       "id": 9,
-      "name": "Agency Director",
+      "name": "Character-9",
       "status": "Dead",
       "species": "Human",
       "type": "",
@@ -427,7 +427,7 @@
     },
     {
       "id": 10,
-      "name": "Alan Rails",
+      "name": "Character-10",
       "status": "Dead",
       "species": "Human",
       "type": "Superhuman (Ghost trains summoner)",
