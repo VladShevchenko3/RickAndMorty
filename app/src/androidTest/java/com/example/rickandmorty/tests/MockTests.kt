@@ -84,4 +84,15 @@ class MockTests : BaseTest() {
             }
         }
     }
+
+    @Test
+    fun checkRecycleSize() = run {
+        mockCharacterList()
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
+        step("Check recycle size on the \'CharacterDetail\' screen") {
+            MainScreen {
+                assertRecycleSize(20)
+            }
+        }
+    }
 }

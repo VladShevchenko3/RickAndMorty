@@ -47,6 +47,12 @@ object MainScreen : KScreen<MainScreen>() {
         }
     }
 
+    fun assertRecycleSize(size: Int) {
+        characterRecycleView {
+            hasSize(size)
+        }
+    }
+
     fun assertTheCharacterHasSpeciesAndStatusByName(
         characterName: String,
         speciesAndStatus: String
