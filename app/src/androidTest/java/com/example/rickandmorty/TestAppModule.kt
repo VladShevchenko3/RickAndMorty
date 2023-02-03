@@ -1,4 +1,4 @@
-package com.example.rickandmorty.di
+package com.example.rickandmorty
 
 import android.content.Context
 import com.example.rickandmorty.data.local.AppDatabase
@@ -6,25 +6,27 @@ import com.example.rickandmorty.data.local.CharacterDao
 import com.example.rickandmorty.data.remote.CharacterRemoteDataSource
 import com.example.rickandmorty.data.remote.CharacterService
 import com.example.rickandmorty.data.repository.CharacterRepository
+import com.example.rickandmorty.di.AppModule
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import dagger.hilt.testing.TestInstallIn
+
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
-object AppModule {
+@TestInstallIn(components = [SingletonComponent::class], replaces = [AppModule::class])
+class TestAppModule {
 
     @Singleton
     @Provides
     fun provideRetrofit(gson: Gson): Retrofit = Retrofit.Builder()
-        .baseUrl("https://rickandmortyapi.com/api/")
+        .baseUrl("http://localhost:9090/")
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
 
@@ -32,8 +34,9 @@ object AppModule {
     fun provideGson(): Gson = GsonBuilder().create()
 
     @Provides
-    fun provideCharacterService(retrofit: Retrofit): CharacterService =
-        retrofit.create(CharacterService::class.java)
+    fun provideCharacterService(retrofit: Retrofit): CharacterService = retrofit.create(
+        CharacterService::class.java
+    )
 
     @Singleton
     @Provides

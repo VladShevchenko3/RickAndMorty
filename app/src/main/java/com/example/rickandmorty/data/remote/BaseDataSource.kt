@@ -11,6 +11,7 @@ abstract class BaseDataSource {
             val response = call()
             if (response.isSuccessful) {
                 val body = response.body()
+                Timber.d(response.toString())
                 if (body != null) return Resource.success(body)
             }
             return error(" ${response.code()} ${response.message()}")
@@ -23,5 +24,4 @@ abstract class BaseDataSource {
         Timber.d(message)
         return Resource.error("Network call has failed for a following reason: $message")
     }
-
 }
