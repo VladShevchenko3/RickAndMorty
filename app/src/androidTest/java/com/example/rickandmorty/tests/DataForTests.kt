@@ -5,14 +5,14 @@ import org.json.JSONObject
 
 object DataForTests {
 
-    private fun geJSONContent(path: String) =
+    private fun getJSONContent(path: String) =
         InstrumentationRegistry.getInstrumentation().context.assets
             .open("${path}.json").bufferedReader().readText()
 
     fun getCharacterDataInTheList(id: Int): CharactersListData {
         val fileName = "character"
         val character =
-            JSONObject(geJSONContent(fileName))
+            JSONObject(getJSONContent(fileName))
                 .getJSONArray("results")
                 .getJSONObject(id - 1)
         return CharactersListData(
@@ -23,7 +23,7 @@ object DataForTests {
 
     fun getCharacterDetails(id: Int): CharacterData {
         val fileName = "character/${id}"
-        val character = JSONObject(geJSONContent(fileName))
+        val character = JSONObject(getJSONContent(fileName))
         return CharacterData(
             character.getString("name"),
             character.getString("status"),
