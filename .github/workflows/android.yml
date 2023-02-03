@@ -24,7 +24,7 @@ jobs:
         with:
           api-level: ${{ matrix.api-level }}
           arch: x86
-          profile: Nexus 6
+          profile: Pixel 2
           avd-name: test
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           disable-animations: true
