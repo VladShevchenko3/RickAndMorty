@@ -9,26 +9,26 @@ object DataForTests {
         InstrumentationRegistry.getInstrumentation().context.assets
             .open("${path}.json").bufferedReader().readText()
 
-    fun getCharacterDataInTheList(id: Int): Map<String, String> {
+    fun getCharacterDataInTheList(id: Int): CharactersListData {
         val fileName = "character"
         val character =
             JSONObject(geJSONContent(fileName))
                 .getJSONArray("results")
                 .getJSONObject(id - 1)
-        return mapOf(
-            "name" to character.getString("name"),
-            "speciesAndStatus" to "${character.getString("species")} - ${character.getString("status")}"
+        return CharactersListData(
+            character.getString("name"),
+            "${character.getString("species")} - ${character.getString("status")}"
         )
     }
 
-    fun getCharacterDetails(id: Int): Map<String, String> {
+    fun getCharacterDetails(id: Int): CharacterData {
         val fileName = "character/${id}"
         val character = JSONObject(geJSONContent(fileName))
-        return mapOf(
-            "name" to character.getString("name"),
-            "status" to character.getString("status"),
-            "species" to character.getString("species"),
-            "gender" to character.getString("gender")
+        return CharacterData(
+            character.getString("name"),
+            character.getString("status"),
+            character.getString("species"),
+            character.getString("gender")
         )
     }
 }

@@ -22,8 +22,8 @@ class MockTests : BaseTest() {
         step("Check the character species and status are displayed on the \'Main\' screen") {
             MainScreen {
                 assertTheCharacterHasSpeciesAndStatusByName(
-                    characterDescriptionData["name"].toString(),
-                    characterDescriptionData["speciesAndStatus"].toString()
+                    characterDescriptionData.name,
+                    characterDescriptionData.speciesAndStatus
                 )
             }
         }
@@ -36,10 +36,10 @@ class MockTests : BaseTest() {
         val characterDescriptionData = getCharacterDataInTheList(9)
         step("Check the character name, species and status are displayed at position 8 on the \'Main\' screen") {
             MainScreen {
-                assertTheCharacterHasNameAtPosition(8, characterDescriptionData["name"].toString())
+                assertTheCharacterHasNameAtPosition(8, characterDescriptionData.name)
                 assertTheCharacterHasSpeciesAndStatusAtPosition(
                     8,
-                    characterDescriptionData["speciesAndStatus"].toString()
+                    characterDescriptionData.speciesAndStatus
                 )
             }
         }
@@ -54,13 +54,13 @@ class MockTests : BaseTest() {
         val characterDetailsData = getCharacterDetails(3)
         step("Check the character details are displayed on the \'CharacterDetail\' screen") {
             MainScreen {
-                actionClickOnTheCharacterByName(characterDescriptionData["name"].toString())
+                actionClickOnTheCharacterByName(characterDescriptionData.name)
             }
             CharacterDetailScreen {
-                assertNameIsDisplayed(characterDetailsData["name"].toString())
-                assertSpeciesIsDisplayed(characterDetailsData["species"].toString())
-                assertStatusIsDisplayed(characterDetailsData["status"].toString())
-                assertGenderIsDisplayed(characterDetailsData["gender"].toString())
+                assertNameIsDisplayed(characterDetailsData.name)
+                assertSpeciesIsDisplayed(characterDetailsData.species)
+                assertStatusIsDisplayed(characterDetailsData.status)
+                assertGenderIsDisplayed(characterDetailsData.gender)
             }
         }
     }
@@ -77,10 +77,10 @@ class MockTests : BaseTest() {
                 actionClickOnTheCharacterAtPosition(7)
             }
             CharacterDetailScreen {
-                assertNameIsDisplayed(characterDetailsData["name"].toString())
-                assertSpeciesIsDisplayed(characterDetailsData["species"].toString())
-                assertStatusIsDisplayed(characterDetailsData["status"].toString())
-                assertGenderIsDisplayed(characterDetailsData["gender"].toString())
+                assertNameIsDisplayed(characterDetailsData.name)
+                assertSpeciesIsDisplayed(characterDetailsData.species)
+                assertStatusIsDisplayed(characterDetailsData.status)
+                assertGenderIsDisplayed(characterDetailsData.gender)
             }
         }
     }
